@@ -6,17 +6,236 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
-    <TextView
-        android:id="@+id/text_dashboard"
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_Kalorien"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewKal"
+        app:layout_constraintEnd_toStartOf="@+id/textViewProgress_Kalorien"
+        app:layout_constraintStart_toEndOf="@+id/textViewKal"
+        app:layout_constraintTop_toTopOf="@+id/textViewKal" />
+
+    <TextView
+        android:id="@+id/textViewKal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="20dp"
+        android:text="Kalorien:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintVertical_bias="0.19" />
+
+    <TextView
+        android:id="@+id/textViewProgress_Kalorien"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewKal"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar_Fett"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFett"
+        app:layout_constraintEnd_toStartOf="@+id/textViewProgress_Fett"
+        app:layout_constraintStart_toEndOf="@+id/textViewFett"
+        app:layout_constraintTop_toTopOf="@+id/textViewFett" />
+
+    <TextView
+        android:id="@+id/textViewFett"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Fett:"
+        app:layout_constraintEnd_toEndOf="@+id/textViewKal"
+        app:layout_constraintTop_toBottomOf="@+id/textViewKal" />
+
+    <TextView
+        android:id="@+id/textViewProgress_Fett"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewFett"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar_Fettsaeuren"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFettsaeuren"
+        app:layout_constraintEnd_toStartOf="@+id/textViewProgress_Fettsaeuren"
+        app:layout_constraintStart_toEndOf="@+id/textViewFettsaeuren"
+        app:layout_constraintTop_toTopOf="@+id/textViewFettsaeuren" />
+
+    <TextView
+        android:id="@+id/textViewFettsaeuren"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Fettsaueren:"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFett"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFett" />
+
+    <TextView
+        android:id="@+id/textViewProgress_Fettsaeuren"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewFettsaeuren"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar_Kohlenhydrate"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewKohlenhydrate"
+        app:layout_constraintEnd_toStartOf="@+id/textViewProgress_Kohlenhydrate"
+        app:layout_constraintStart_toEndOf="@+id/textViewKohlenhydrate"
+        app:layout_constraintTop_toTopOf="@+id/textViewKohlenhydrate" />
+
+    <TextView
+        android:id="@+id/textViewKohlenhydrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Kohlenhydrate:"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFettsaeuren"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFettsaeuren" />
+
+    <TextView
+        android:id="@+id/textViewProgress_Kohlenhydrate"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewKohlenhydrate"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar_Zucker"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewZucker"
+        app:layout_constraintEnd_toStartOf="@+id/textViewProgress_Zucker"
+        app:layout_constraintStart_toEndOf="@+id/textViewZucker"
+        app:layout_constraintTop_toTopOf="@+id/textViewZucker" />
+
+    <TextView
+        android:id="@+id/textViewZucker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Zucker:"
+        app:layout_constraintEnd_toEndOf="@+id/textViewKohlenhydrate"
+        app:layout_constraintTop_toBottomOf="@+id/textViewKohlenhydrate" />
+
+    <TextView
+        android:id="@+id/textViewProgress_Zucker"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewZucker"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar_Eiweis"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewEiweis"
+        app:layout_constraintEnd_toStartOf="@+id/textViewProgress_Eiweis"
+        app:layout_constraintStart_toEndOf="@+id/textViewEiweis"
+        app:layout_constraintTop_toTopOf="@+id/textViewEiweis" />
+
+    <TextView
+        android:id="@+id/textViewEiweis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Eiweiß:"
+        app:layout_constraintEnd_toEndOf="@+id/textViewZucker"
+        app:layout_constraintTop_toBottomOf="@+id/textViewZucker" />
+
+    <TextView
+        android:id="@+id/textViewProgress_Eiweis"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewEiweis"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar_Salz"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewSalz"
+        app:layout_constraintEnd_toStartOf="@+id/textViewProgress_Salz"
+        app:layout_constraintStart_toEndOf="@+id/textViewSalz"
+        app:layout_constraintTop_toTopOf="@+id/textViewSalz" />
+
+    <TextView
+        android:id="@+id/textViewSalz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Salz:"
+        app:layout_constraintEnd_toEndOf="@+id/textViewEiweis"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEiweis" />
+
+    <TextView
+        android:id="@+id/textViewProgress_Salz"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="2487/4000"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewSalz"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

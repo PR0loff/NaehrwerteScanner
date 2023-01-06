@@ -1,4 +1,4 @@
-package com.example.naehrwertescanner;
+package com.example.testapplication;
 
 import org.junit.Test;
 

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_Name"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/textView_Brennwert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="Brennwert in kcal:"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_davonZucker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="davon Zucker:"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Kohlenhydrate"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Kohlenhydrate" />
+
+    <TextView
+        android:id="@+id/textView_Eiweiß"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Eiweiß:"
+        app:layout_constraintEnd_toEndOf="@+id/textView_davonZucker"
+        app:layout_constraintTop_toBottomOf="@+id/textView_davonZucker" />
+
+    <TextView
+        android:id="@+id/textView_Salz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Salz:"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Eiweiß"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Eiweiß" />
+
+    <TextView
+        android:id="@+id/textView_Menge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Menge in g:"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Salz"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Salz" />
+
+    <TextView
+        android:id="@+id/textView_Fett"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Fett:"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Brennwert"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Brennwert" />
+
+    <TextView
+        android:id="@+id/textView_Kohlenhydrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Kohlenhydrate:"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Fettsäure"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Fettsäure" />
+
+    <TextView
+        android:id="@+id/textView_Fettsäure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="davon gesättigte\n          Fettsäuren:"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Fett"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Fett" />
+
+    <TextView
+        android:id="@+id/textView_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Name:"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Menge"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Menge" />
+
+    <TextView
+        android:id="@+id/textView_Datenbank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Datenbankeintrag"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Name"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Name" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal_Brennwert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_Brennwert"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal_Kohlenhydrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textSize="14sp"
+        android:maxLength="4"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_Kohlenhydrate"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal_Fettsäuren"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textSize="14sp"
+        android:maxLength="4"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_Fettsäure"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal_Fett"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textSize="14sp"
+        android:maxLength="4"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_Fett"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal_Eiweiß"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textSize="14sp"
+        android:maxLength="4"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_Eiweiß"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal_Salz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textSize="14sp"
+        android:maxLength="4"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_Salz"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal_davonZucker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textSize="14sp"
+        android:maxLength="4"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_davonZucker"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal_Menge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:maxLength="4"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_Menge"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_Datenbank"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

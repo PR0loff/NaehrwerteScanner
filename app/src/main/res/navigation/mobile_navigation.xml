@@ -3,29 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
-
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.naehrwertescanner.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+    app:startDestination="@+id/navigation_dashboard">
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.naehrwertescanner.ui.dashboard.DashboardFragment"
+        android:name="com.example.testapplication.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.naehrwertescanner.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_savedgroceries"
+        android:name="com.example.testapplication.ui.home.SavedGroceriesFragment"
+        android:label="Saved Groceries"
+        tools:layout="@layout/fragment_savedgroceries" />
 
     <fragment
-        android:id="@+id/navigation_Test"
-        android:name="com.example.naehrwertescanner.ui.notifications.NotificationsFragment"
-        android:label="Test"
-        tools:layout="@layout/fragment_test" />
+        android:id="@+id/navigation_recipe"
+        android:name="com.example.testapplication.ui.notifications.RecipeFragment"
+        android:label="Recipes"
+        tools:layout="@layout/fragment_recipe" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.example.testapplication.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
+
 </navigation>
