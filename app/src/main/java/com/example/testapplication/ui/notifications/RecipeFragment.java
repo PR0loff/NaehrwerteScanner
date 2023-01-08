@@ -12,9 +12,11 @@ import com.example.testapplication.R;
 
 public class RecipeFragment extends Fragment {
 
-    public View onCreateView(@NonNull LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_recipe, container, false);
+        View view = inflater.inflate(R.layout.fragment_recipe, container,
+                false);
         return view;
     }
 

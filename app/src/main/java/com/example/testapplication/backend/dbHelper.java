@@ -5,28 +5,32 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public final class dbHelper {
     private static SQLiteDatabase db;
 
-    public dbHelper()
-    {
+    public dbHelper() {
 
     }
 
-    public static void initialize(SQLiteDatabase _db)
-    {
-        db= _db;
+    public static void initialize(SQLiteDatabase _db) {
+        db = _db;
     }
 
-    public static void addLebensmittel(String _name, double _brennwert, double _fett, double _fettsaeuren, double _kohlenhydrate, double _zucker, double _eiweis, double _salz, boolean _istVorlage, double _menge)
-    {
-        db.execSQL("INSERT INTO Lebensmittel (Name, Brennwert, Fett, Fettsaeure, Kohlenhydrate, Zucker, Eiweis, Salz, istVorlage)" +
-                "VALUES ('"+_name+ "', "+_brennwert+", "+ _fett+", "+_fettsaeuren+", "+_kohlenhydrate+", "+_zucker+", "+_eiweis+", "+_salz+", "+_istVorlage+" )");
 
-        //TODO LebensmittelID herausfinden und zur Tabelle hinzufügen
+    //Methode um ein Lebensmittel zur Datenbank hinzuzufügen
+    public static void addLebensmittel(String _name, double _brennwert,
+                                       double _fett, double _fettsaeuren,
+                                       double _kohlenhydrate, double _zucker,
+                                       double _eiweis, double _salz,
+                                       boolean _istVorlage, double _menge) {
+        db.execSQL("INSERT INTO Lebensmittel (Name, Brennwert, Fett, " +
+                "Fettsaeure, Kohlenhydrate, Zucker, Eiweis, Salz, istVorlage)" +
+                "VALUES ('" + _name + "', " + _brennwert + ", " + _fett + ", " +
+                _fettsaeuren + ", " + _kohlenhydrate + ", " + _zucker + ", "
+                + _eiweis + ", " + _salz + ", " + _istVorlage + " )");
 
+        //Die Id des Lebensmittels wird herausgefunden und zum aktuellen Tag hinzugefügt
         String query = "SELECT MAX(ID) FROM Lebensmittel";
         Cursor resultSet = db.rawQuery(query, null);
         resultSet.moveToFirst();
@@ -37,12 +41,12 @@ public final class dbHelper {
         System.out.println();
         int TagID = createDay(today);
 
-        NährwertZumTagHinzufügen(_menge,TagID,LebID);
+        NährwertZumTagHinzufügen(_menge, TagID, LebID);
 
     }
 
-    public static void createTables()
-    {
+    //Methode zum erstellen der Tabellen wenn diese nicht existieren
+    public static void createTables() {
         db.execSQL("CREATE TABLE if not exists Lebensmittel (" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT ," +
                 "Name varchar(256) ," +
@@ -83,8 +87,8 @@ public final class dbHelper {
                 "Salz double(4,2))");
     }
 
-    public static void dropTables()
-    {
+    //Methode um alle Tabellen zu löschen
+    public static void dropTables() {
         db.execSQL("DROP TABLE Tagesverzehr");
         db.execSQL("DROP TABLE Lebensmittel");
         db.execSQL("DROP TABLE LebTag");
@@ -92,24 +96,24 @@ public final class dbHelper {
         db.execSQL("DROP TABLE Rezept");
     }
 
-    public static int createDay(LocalDate _date)
-    {
-        //TODO quarry in Tagesverzehr ob der Tag angelegt ist, gibt Tages ID zurück, sonst wird der Tag neu angelegt
+    //Methode um den aktuellen Tag zur dB hinzuzufügen, sofern er nicht existiert
+    public static int createDay(LocalDate _date) {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd");
         String date = dtf.format(_date);
-        String query = "SELECT ID FROM Tagesverzehr WHERE Datum = '"+date+"'";
+        String query = "SELECT ID " +
+                "FROM Tagesverzehr " +
+                "WHERE Datum = '" + date + "'";
         Cursor resultSet = db.rawQuery(query, null);
         resultSet.moveToFirst();
 
-        if(resultSet.getCount() == 0)
-        {
+        if (resultSet.getCount() == 0) {
             db.execSQL("INSERT INTO Tagesverzehr (Datum)" +
-                    "VALUES ('"+date+"')");
+                    "VALUES ('" + date + "')");
         }
         resultSet.close();
 
-        query = "SELECT ID FROM Tagesverzehr WHERE Datum = '"+date+"'";
+        query = "SELECT ID FROM Tagesverzehr WHERE Datum = '" + date + "'";
         resultSet = db.rawQuery(query, null);
         resultSet.moveToFirst();
 
@@ -119,19 +123,20 @@ public final class dbHelper {
         return TagID;
     }
 
-    private static void NährwertZumTagHinzufügen(double menge, int tagID, int lebID)
-    {
+
+    //Methode um Nährwerte mit dem Tag zu verknüpfen
+    private static void NährwertZumTagHinzufügen(double menge, int tagID,
+                                                 int lebID) {
         db.execSQL("INSERT INTO LebTag (LebID, TagID, Menge)" +
-                "VALUES ("+lebID+ ", "+tagID+", "+ menge+")");
+                "VALUES (" + lebID + ", " + tagID + ", " + menge + ")");
     }
 
-    public static Cursor getNährwerteproTag(LocalDate _date)
-    {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd");
-        String date = dtf.format(_date);
-        String query = "SELECT Name, Brennwert, Fett, Fettsaeure, Kohlenhydrate, Zucker, Eiweis, Salz " +
+    //Methode um alle Einträge für einen bestimmten Tag zu bekommen
+    public static Cursor getNährwerteproTag(String _date) {
+        String query = "SELECT Name, Brennwert, Fett, Fettsaeure, " +
+                "Kohlenhydrate, Zucker, Eiweis, Salz, Menge " +
                 "FROM Lebensmittel, Tagesverzehr, LebTag " +
-                "WHERE Tagesverzehr.Datum = '"+date+"' " +
+                "WHERE Tagesverzehr.Datum = '" + _date + "' " +
                 "AND Tagesverzehr.ID = LebTag.TagID " +
                 "AND Lebensmittel.ID = LebTag.LebID";
         Cursor resultSet = db.rawQuery(query, null);
@@ -140,19 +145,36 @@ public final class dbHelper {
         return resultSet;
     }
 
-    public static Cursor getNutrients(int id)
-    {
-        String query = "SELECT Name, Brennwert, Fett, Fettsaeure, Kohlenhydrate, Zucker, Eiweis, Salz  "+
-                "FROM Lebensmittel " +
-                "WHERE ID = "+id;
+    //Methode um alle Einträge für einen bestimmten Tag zu bekommen
+    public static Cursor getNährwerteproTag(LocalDate _date) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+        String date = dtf.format(_date);
+        String query = "SELECT Name, Brennwert, Fett, Fettsaeure, " +
+                "Kohlenhydrate, Zucker, Eiweis, Salz " +
+                "FROM Lebensmittel, Tagesverzehr, LebTag " +
+                "WHERE Tagesverzehr.Datum = '" + date + "' " +
+                "AND Tagesverzehr.ID = LebTag.TagID " +
+                "AND Lebensmittel.ID = LebTag.LebID";
         Cursor resultSet = db.rawQuery(query, null);
         resultSet.moveToFirst();
 
         return resultSet;
     }
 
-    public static Cursor getDates()
-    {
+    //Methode um die Nährwerte für ein Lebensmittel zu holen
+    public static Cursor getNutrients(int id) {
+        String query = "SELECT Name, Brennwert, Fett, Fettsaeure, " +
+                "Kohlenhydrate, Zucker, Eiweis, Salz  " +
+                "FROM Lebensmittel " +
+                "WHERE ID = " + id;
+        Cursor resultSet = db.rawQuery(query, null);
+        resultSet.moveToFirst();
+
+        return resultSet;
+    }
+
+    //Methode um alle gespeicherten Daten zu holen
+    public static Cursor getDates() {
         String query = "SELECT ID AS _id , Datum " +
                 "FROM Tagesverzehr ";
         Cursor resultSet = db.rawQuery(query, null);
@@ -161,8 +183,8 @@ public final class dbHelper {
         return resultSet;
     }
 
-    public static Cursor getLebensmittelVorlagen()
-    {
+    //Methode um alle Vorlagen zu erhalten
+    public static Cursor getLebensmittelVorlagen() {
         String query = "SELECT ID AS _id , Name " +
                 "FROM Lebensmittel " +
                 "WHERE istVorlage = 1";
@@ -170,5 +192,13 @@ public final class dbHelper {
         resultSet.moveToFirst();
 
         return resultSet;
+    }
+
+    //Methode um alle Vorlagen zu löschen
+    public static void dropLebensmittel()
+    {
+        db.execSQL("DELETE " +
+                "FROM Lebensmittel " +
+                "WHERE istVorlage = 1");
     }
 }

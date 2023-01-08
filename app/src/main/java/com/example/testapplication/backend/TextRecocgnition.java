@@ -1,7 +1,6 @@
 package com.example.testapplication.backend;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -17,25 +16,26 @@ import com.google.mlkit.vision.text.TextRecognizer;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-
+//Klasse in welcher die Texterkennung realisiert wird
+//https://developers.google.com/ml-kit/vision/text-recognition
 public class TextRecocgnition {
 
-    public Text TextBlocks;
-    public boolean isReady = false;
+    public static Text TextBlocks;
+    public static boolean isReady = false;
 
-    public void runTextRecognition(Bitmap BmImage, Callable<Void> callback) {
+    //Methode erhält das Bild als Bitmap und eine Callback Funktion welche bei
+    //Abschluss aufgerufen wird
+    public static void runTextRecognition(Bitmap BmImage, Callable<Void> callback) {
         InputImage image = InputImage.fromBitmap(BmImage, 0);
-
         TextRecognizer recognizer = TextRecognition.getClient();
-
+        //Asynchrone Texterkennung
         Task tr = recognizer.process(image)
                 .addOnSuccessListener(
                         new OnSuccessListener<Text>() {
                             @Override
                             public void onSuccess(Text texts) {
                                 TextBlocks = texts;
-                                Log.println(Log.DEBUG, "TESTER","SUCCESS");
-                                processTextRecognitionResult(texts);
+                                isReady = true;
                                 try {
                                     callback.call();
                                 } catch (Exception e) {
@@ -48,32 +48,7 @@ public class TextRecocgnition {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 e.printStackTrace();
-                                Log.println(Log.DEBUG, "TESTER","asdadsdfadsffdasasdffad");
                             }
                         });
     }
-
-    private List<TextBlock> processTextRecognitionResult(Text texts) {
-        List<TextBlock> blocks = texts.getTextBlocks();
-        if (blocks.size() == 0) {
-
-            return null;
-        }
-        //mGraphicOverlay.clear();
-        for (int i = 0; i < blocks.size(); i++) {
-            List<Text.Line> lines = blocks.get(i).getLines();
-            for (int j = 0; j < lines.size(); j++) {
-                List<Text.Element> elements = lines.get(j).getElements();
-                for (int k = 0; k < elements.size(); k++) {
-                    //GraphicOverlay.Graphic textGraphic = new TextGraphic(mGraphicOverlay, elements.get(k));
-                    //mGraphicOverlay.add(textGraphic);
-                    //Log.println(Log.DEBUG, "TEXTERKENNUNG", elements.get(k).getText());
-
-                }
-            }
-        }
-        isReady = true;
-        return blocks;
-    }
-
 }

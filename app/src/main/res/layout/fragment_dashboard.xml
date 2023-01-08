@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
         android:layout_marginTop="20dp"
-        android:text="Kalorien:"
+        android:text="k Kalorien:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner"
@@ -40,7 +40,7 @@
 
     <TextView
         android:id="@+id/textViewProgress_Kalorien"
-        android:layout_width="75dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="TextView"
@@ -72,7 +72,7 @@
 
     <TextView
         android:id="@+id/textViewProgress_Fett"
-        android:layout_width="75dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="TextView"
@@ -104,7 +104,7 @@
 
     <TextView
         android:id="@+id/textViewProgress_Fettsaeuren"
-        android:layout_width="75dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="TextView"
@@ -136,7 +136,7 @@
 
     <TextView
         android:id="@+id/textViewProgress_Kohlenhydrate"
-        android:layout_width="75dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="TextView"
@@ -168,7 +168,7 @@
 
     <TextView
         android:id="@+id/textViewProgress_Zucker"
-        android:layout_width="75dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="TextView"
@@ -200,7 +200,7 @@
 
     <TextView
         android:id="@+id/textViewProgress_Eiweis"
-        android:layout_width="75dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="TextView"
@@ -232,7 +232,7 @@
 
     <TextView
         android:id="@+id/textViewProgress_Salz"
-        android:layout_width="75dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="2487/4000"
